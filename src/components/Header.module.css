@@ -1,0 +1,11 @@
+.header {
+    grid-area: header;
+    -webkit-box-shadow: 0px 0px 7px -2px #000000;
+    box-shadow: 0px 0px 7px -2px #000000;
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+  .header img {
+    width: 80px;
+  }

@@ -1,0 +1,16 @@
+.nav {
+    grid-area: nav;
+}
+
+.item a {
+    color: #3B8AFE;
+    transition: opacity 300ms ease-in;
+}
+
+.item:not(:last-child) {
+    padding-bottom: 15px;
+}
+
+.item:last-child {
+    padding-top: 50px;
+}
