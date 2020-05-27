@@ -1,0 +1,9 @@
+.postContent {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.post img {
+    width: 50px;
+}
