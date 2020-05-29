@@ -11,8 +11,8 @@ const MyPosts = () => {
                 <button>Добавить</button>
             </div>
             <div>
-                <Post/>
-                <Post/>
+                <Post message="Привет! Это мой первый пост в этой соц-сети"/>
+                <Post message="Вау! Эта соц-сеть работает!!"/>
             </div>
         </div>
     )

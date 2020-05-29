@@ -1,9 +1,5 @@
-.content {
-    grid-area: content;
-    padding: 15px;
-  }
-  
-  .profile-cover {
+
+.profile-cover {
     width: 100%;
     height: 300px;
     object-fit: cover;
