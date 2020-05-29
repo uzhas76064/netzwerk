@@ -14,3 +14,9 @@
 .item:last-child {
     padding-top: 50px;
 }
+
+.item svg{
+    width: 32px;
+    height: 20px;
+    color: lightslategrey;
+}

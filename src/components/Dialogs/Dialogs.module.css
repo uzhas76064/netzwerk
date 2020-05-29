@@ -1,0 +1,30 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+}
+
+.dialog {
+    font-size: 16px;
+    padding-bottom: 15px;
+}
+
+.dialogItems {
+    border-right: 1px solid;
+    width: 50%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.messages {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+}
+
+.message {
+    line-height: 1.7;
+    color: #616161;
+    background: #F5F5F5;
+    margin-bottom: 14px;
+    padding: 5px 40px;
+    border-radius: 5px;
+}

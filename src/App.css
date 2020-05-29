@@ -39,3 +39,7 @@ a:hover {
   grid-area: content;
   padding: 15px;
 }
+
+.active {
+  text-decoration: underline;
+}
