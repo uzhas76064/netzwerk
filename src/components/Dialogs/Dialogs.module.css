@@ -1,6 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 5fr 5fr;
+    padding: 15px;
 }
 
 .dialog {

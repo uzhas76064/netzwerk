@@ -37,7 +37,6 @@ a:hover {
 
 .app-wrapper-content {
   grid-area: content;
-  padding: 15px;
 }
 
 .active {

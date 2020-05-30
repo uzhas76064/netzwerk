@@ -1,7 +1,8 @@
 import React from 'react';
+import classes from "./Settings.module.css";
 
 const Settings = (props) => {
-    return <div>Settings</div>
+    return <div className={classes.settingsBlock}>Settings</div>
 }
 
 export default Settings;

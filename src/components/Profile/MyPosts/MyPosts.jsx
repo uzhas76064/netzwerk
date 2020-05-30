@@ -4,7 +4,7 @@ import classes from "../MyPosts/MyPosts.module.css";
 
 const MyPosts = () => {
     return (
-        <div>
+        <div className={classes.postsBlock}>
             <h3>My posts</h3>
             <div className={classes.addPost}>
                 <textarea name="" id="" cols="80" rows="10"></textarea>
