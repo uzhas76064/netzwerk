@@ -1,5 +1,5 @@
 body {
-  background-color: #FBFBFD;
+  background: url("https://images.pexels.com/photos/3591570/pexels-photo-3591570.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   font-family: 'Hammersmith One', sans-serif;
   font-size: 20px;
 }
@@ -20,8 +20,8 @@ a:hover {
 .nav, .app-wrapper-content {
   -webkit-box-shadow: 0px 0px 7px -2px #000000;
   box-shadow: 0px 0px 7px -2px #000000;
-  background-color: white;
   border-radius: 5px;
+  background: #ecf0f1;
 }
 
 .app-wrapper {

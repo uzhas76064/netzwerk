@@ -11,6 +11,12 @@
     margin-bottom: 20px;
 }
 
+.addPost textarea:focus {
+    outline: 0;
+    outline-offset: 5px;
+    border: 1px solid #4FC3F7;
+}
+
 .addPost button {
     border: none;
     border-radius: 5px;
@@ -19,4 +25,5 @@
     padding: 15px 40px;
     background: #448aff;
     color: white;
+    outline: none;
 }

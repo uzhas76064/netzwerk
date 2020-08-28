@@ -3,7 +3,8 @@
     grid-area: header;
     -webkit-box-shadow: 0px 0px 7px -2px #000000;
     box-shadow: 0px 0px 7px -2px #000000;
-    background-color: white;
+    background-color: #2980b9;
+    color: white;
     border-radius: 5px;
   }
 
