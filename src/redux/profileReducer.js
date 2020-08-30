@@ -1,4 +1,4 @@
-import {ADD_POST, SEND_MESSAGE, UPDATE_NEW_POST_TEXT} from './state'
+import {ADD_POST, SEND_MESSAGE, UPDATE_NEW_POST_TEXT} from './store'
 
 const profileReducer = (state, action) => {
     switch (action.type) {

@@ -1,4 +1,4 @@
-import {SEND_MESSAGE, UPDATE_NEW_MESSAGE_BODY} from "./state";
+import {SEND_MESSAGE, UPDATE_NEW_MESSAGE_BODY} from "./store";
 
 const dialogsReducer = (state, action) => {
     switch (action.type) {
