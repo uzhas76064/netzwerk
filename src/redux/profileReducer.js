@@ -1,6 +1,14 @@
 import {ADD_POST, SEND_MESSAGE, UPDATE_NEW_POST_TEXT} from './store'
 
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {id: 1, postText: "Привет! Это мой первый пост в этой соц-сети", likesCount: 0},
+        {id: 2, postText: "Вау! Эта соц-сеть работает!!", likesCount: 10},
+    ],
+    newPostText: ""
+};
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let post = {
