@@ -1,4 +1,4 @@
-import {ADD_POST, SEND_MESSAGE, UPDATE_NEW_POST_TEXT} from './store'
+import {ADD_POST, UPDATE_NEW_POST_TEXT} from './store'
 
 let initialState = {
     posts: [
@@ -27,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
     }
 };
 
-export const addPostActionCreator = () => ({type: SEND_MESSAGE});
+export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText: text});
 
 export default profileReducer;
