@@ -26,17 +26,18 @@ a:hover {
 
 .app-wrapper {
   width: 1200px;
-  margin: 25px auto 0;
   display: grid;
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 20px;
   grid-template-areas: "header header"
                         "nav content";
+  margin: 0 auto;
 }
 
 .app-wrapper-content {
   grid-area: content;
+  padding: 40px;
 }
 
 .active {

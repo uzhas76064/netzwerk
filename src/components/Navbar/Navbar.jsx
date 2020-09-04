@@ -15,6 +15,14 @@ const Navbar = (props) => {
                     <NavLink exact to="/">Profile</NavLink>
                 </li>
                 <li className={classes.item}>
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-people-fill" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                    </svg>
+                    <NavLink to="/users">Users</NavLink>
+                </li>
+                <li className={classes.item}>
                     <svg className="bi bi-chat-dots-fill" width="1em" height="1em" viewBox="0 0 16 16"
                          fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -35,12 +43,13 @@ const Navbar = (props) => {
                     <NavLink to="/news">News</NavLink>
                 </li>
                 <li className={classes.item}>
-                    <svg className="bi bi-volume-down-fill" width="1em" height="1em" viewBox="0 0 16 16"
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-music-note-list"
                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd"
-                              d="M8.717 3.55A.5.5 0 0 1 9 4v8a.5.5 0 0 1-.812.39L5.825 10.5H3.5A.5.5 0 0 1 3 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
-                        <path
-                            d="M10.707 11.182A4.486 4.486 0 0 0 12.025 8a4.486 4.486 0 0 0-1.318-3.182L10 5.525A3.489 3.489 0 0 1 11.025 8c0 .966-.392 1.841-1.025 2.475l.707.707z"/>
+                        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+                        <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+                        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+                        <path fill-rule="evenodd"
+                              d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                     <NavLink to="/music">Music</NavLink>
                 </li>
