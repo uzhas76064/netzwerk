@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./Users.module.css";
 import {v4 as uuidv4} from "uuid";
+import {NavLink} from "react-router-dom";
 
 const Users = props => {
     let dummyImg = 'https://dummyimage.com/75x75/c2c0c2/494a4f.png&text=No+image';
@@ -26,7 +27,9 @@ const Users = props => {
                     <div className={classes.user} key={user.id}>
                         <div>
                             <div className={classes.userImg}>
-                                <img src={user.photos.small !== null ? user.photos.small : dummyImg} alt=""/>
+                                <NavLink to={'/profile/' + user.id}>
+                                    <img src={user.photos.small !== null ? user.photos.small : dummyImg} alt=""/>
+                                </NavLink>
                             </div>
                         </div>
                         <div className={classes.userInfo}>

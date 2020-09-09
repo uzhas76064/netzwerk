@@ -12,7 +12,7 @@ const Navbar = (props) => {
                         <path fillRule="evenodd"
                               d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
-                    <NavLink exact to="/">Profile</NavLink>
+                    <NavLink to="/profile">Profile</NavLink>
                 </li>
                 <li className={classes.item}>
                     <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-people-fill" fill="currentColor"
