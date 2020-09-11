@@ -12,18 +12,19 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = (props) => {
   return (
-    <div className="app-wrapper">
-      <Header />
-      <Navbar />
-      <div className="app-wrapper-content">
-          <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-          <Route path="/messages" render={() => <DialogsContainer />}/>
-          <Route path="/users" render={() => <UsersContainer/>}/>
-          <Route path="/news" component={News}/>
-          <Route path="/music" component={Music}/>
-          <Route path="/settings" component={Settings}/>
-      </div>
-    </div>
+      <><Header/>
+          <div className="app-wrapper">
+              <Navbar/>
+              <div className="app-wrapper-content">
+                  <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                  <Route path="/messages" render={() => <DialogsContainer/>}/>
+                  <Route path="/users" render={() => <UsersContainer/>}/>
+                  <Route path="/news" component={News}/>
+                  <Route path="/music" component={Music}/>
+                  <Route path="/settings" component={Settings}/>
+              </div>
+          </div>
+      </>
   );
 };
 
