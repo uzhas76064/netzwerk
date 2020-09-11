@@ -4,6 +4,10 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+.nav ul h4{
+    margin-bottom: 10px;
+}
+
 .item a {
     color: #595959;
     transition: opacity 300ms ease-in;
@@ -22,8 +26,4 @@
 
 .item:not(:last-child) {
     padding-bottom: 8px;
-}
-
-.item:last-child {
-    padding-top: 50px;
 }

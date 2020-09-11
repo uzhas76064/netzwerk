@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+h4 {
+    font-family: 'Open Sans', sans-serif;
+}
+
 ul {
     margin: 0;
 }

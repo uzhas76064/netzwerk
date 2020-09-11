@@ -6,6 +6,7 @@ const Navbar = (props) => {
     return (
         <nav className={classes.nav}>
             <ul>
+                <h4>People</h4>
                 <li className={classes.item}>
                     <NavLink to="/profile">
                         <i className="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -18,6 +19,7 @@ const Navbar = (props) => {
                         <span>Users</span>
                     </NavLink>
                 </li>
+                <h4>Communication</h4>
                 <li className={classes.item}>
                     <NavLink to="/messages">
                         <i className="fa fa-commenting-o" aria-hidden="true"></i>
@@ -30,6 +32,7 @@ const Navbar = (props) => {
                         <span>News</span>
                     </NavLink>
                 </li>
+                <h4>Other</h4>
                 <li className={classes.item}>
                     <NavLink to="/music">
                         <i className="fa fa-music" aria-hidden="true"></i>
