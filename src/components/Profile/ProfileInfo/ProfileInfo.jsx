@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
-import {NavLink, Route} from "react-router-dom";
+import {NavLink, Route, Switch} from "react-router-dom";
 import SocialTab from "./SocialTab";
 import OtherTab from "./OtherTab";
 
@@ -28,8 +28,10 @@ const ProfileInfo = (props) => {
                 </NavLink>
             </div>
             <div className={classes.profileInfo}>
-                <Route path='#ocial-networks' render={() => <SocialTab/>}/>
-                <Route path='#other' render={() => <OtherTab/>}/>
+                <Switch>
+                    <Route path='#social-networks' render={() => <SocialTab/>}/>
+                    <Route path='#other' render={() => <OtherTab website={props.profile.contacts.website} github={props.profile.contacts.github}/>}/>
+                </Switch>
             </div>
             <div>
                 Need a job: {props.profile.lookingForAJob ? 'YES':'NO'}

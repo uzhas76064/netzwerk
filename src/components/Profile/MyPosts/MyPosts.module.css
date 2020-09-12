@@ -27,3 +27,8 @@
     color: white;
     outline: none;
 }
+
+.posts {
+    margin: 0 auto;
+    width: 50%;
+}
