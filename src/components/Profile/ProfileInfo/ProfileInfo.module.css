@@ -1,5 +1,27 @@
 .descriptionBlock {
-    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-flow: column-reverse;
+    position: relative;
+}
+
+.descriptionBlock img {
+    border-radius: 50%;
+    width: 200px;
+    position: absolute;
+}
+
+.descriptionBlock q {
+    position: relative;
+    top: 2em;
+    font-style: italic;
+}
+
+.profileImageContainer {
+    background: #292e30;
+    height: 400px;
+    filter: blur(1px);
 }
 
 .profileImage {
@@ -8,4 +30,40 @@
     object-fit: cover;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px ;
+}
+
+.profileInfo {
+    margin-top: 7em;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid;
+    width: 50%;
+    margin: 5em auto;
+    padding-bottom: 1em;
+}
+
+.tabs a:not(:last-child) {
+    padding-right: 2em;
+}
+
+.website, .vk, .facebook, .twitter, .instagram, .github, .youtube {
+    background: #F5F5F5;
+    border-radius: 48px;
+    width: 148px;
+}
+
+.website, .vk, .facebook, .twitter, .instagram, .github, .youtube a {
+    padding: 9px 12px 9px 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+.website i, .vk i, .facebook i, .twitter i, .instagram i, .github i, .youtube i {
+    width: 24px;
+    padding-right: 8px;
+    padding-left: 8px;
+    color: #448aff;
 }

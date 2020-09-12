@@ -1,6 +1,9 @@
 import React from "react";
 import classes from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
+import {NavLink, Route} from "react-router-dom";
+import SocialTab from "./SocialTab";
+import OtherTab from "./OtherTab";
 
 const ProfileInfo = (props) => {
     if(!props.profile) {
@@ -9,23 +12,24 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div>
-                <img className={classes.profileImage}
-                     src="https://images.unsplash.com/photo-1590004987778-bece5c9adab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80"
-                     alt=""/>
+            <div className={classes.profileImageContainer}>
+
             </div>
             <div className={classes.descriptionBlock}>
+                <q>{props.profile.aboutMe}</q>
                 <img src={props.profile.photos.large} alt=""/>
-                <p>{props.profile.aboutMe}</p>
             </div>
-            <div>
-                <div>Facebook: {props.profile.contacts.facebook}</div>
-                <div>Website: {props.profile.contacts.website}</div>
-                <div>VK: {props.profile.contacts.vk}</div>
-                <div>Twitter: {props.profile.contacts.twitter}</div>
-                <div>Instagram: {props.profile.contacts.instagram}</div>
-                <div>Youtube: {props.profile.contacts.youtube}</div>
-                <div>Github: {props.profile.contacts.github}</div>
+            <div className={classes.tabs}>
+                <NavLink to='#social-networks'>
+                    <span>Social</span>
+                </NavLink>
+                <NavLink to='#other'>
+                    <span>Other</span>
+                </NavLink>
+            </div>
+            <div className={classes.profileInfo}>
+                <Route path='#ocial-networks' render={() => <SocialTab/>}/>
+                <Route path='#other' render={() => <OtherTab/>}/>
             </div>
             <div>
                 Need a job: {props.profile.lookingForAJob ? 'YES':'NO'}
