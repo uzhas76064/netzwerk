@@ -3,6 +3,7 @@ import classes from "./Users.module.css";
 import {v4 as uuidv4} from "uuid";
 import {NavLink} from "react-router-dom";
 import {FollowAPI} from "../../api/api";
+import {toggleIsFollowing} from "../../redux/usersReducer";
 
 const Users = props => {
     let dummyImg = 'https://dummyimage.com/75x75/c2c0c2/494a4f.png&text=No+image';
@@ -15,21 +16,24 @@ const Users = props => {
     }
 
     const follow = (userId) => {
+        props.toggleIsFollowing(true, userId);
       followAPI.follow(userId)
             .then(data => {
-                debugger;
                 if (data.data.resultCode === 0) {
                     props.follow(userId)
                 }
+                props.toggleIsFollowing(false, userId);
             })
     }
 
     const unfollow = (userId) => {
+        props.toggleIsFollowing(true, userId);
        followAPI.unfollow(userId)
             .then(data => {
                 if (data.data.resultCode === 0) {
                     props.unfollow(userId);
-                }
+               }
+                props.toggleIsFollowing(false, userId);
             })
     }
 
@@ -63,10 +67,8 @@ const Users = props => {
                                 <div>{"user.location.city"}</div>
                             </div>
                             {
-                                user.followed ? <button className={classes.followBtn}
-                                                        onClick={() => unfollow(user.id)}>Unfollow</button>
-                                    : <button className={classes.followBtn}
-                                              onClick={() => follow(user.id)}>Follow</button>
+                                user.followed ? <button disabled={props.isFollowing} className={classes.followBtn} onClick={() => unfollow(user.id)}>Unfollow</button>
+                                    : <button disabled={props.isFollowing} className={classes.followBtn} onClick={() => follow(user.id)}>Follow</button>
                             }
                         </div>
                     </div>
