@@ -9,8 +9,8 @@
 
   .logo {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+      justify-content: space-around;
+      align-items: center;
   }
 
   .logo {
@@ -19,4 +19,8 @@
   
   .header img {
     width: 45px;
+  }
+
+  .loginBlock {
+      float: right;
   }

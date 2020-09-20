@@ -15,7 +15,7 @@ import Preloader from "../common/Preloader/Preloader";
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
         this.props.setPreloader(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true})
             .then(response => {
                 this.props.setPreloader(false);
                 this.props.setUsers(response.data.items)
@@ -26,7 +26,7 @@ class UsersAPIComponent extends React.Component {
     onPageChanged = (p) => {
         this.props.setCurrentPage(p);
         this.props.setPreloader(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`, {withCredentials: true})
             .then(response => {
                 this.props.setPreloader(false);
                 this.props.setUsers(response.data.items)
