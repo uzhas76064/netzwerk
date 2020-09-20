@@ -2,36 +2,32 @@ import React from 'react';
 import classes from "./Users.module.css";
 import {v4 as uuidv4} from "uuid";
 import {NavLink} from "react-router-dom";
-import axios from 'axios';
+import {FollowAPI} from "../../api/api";
 
 const Users = props => {
     let dummyImg = 'https://dummyimage.com/75x75/c2c0c2/494a4f.png&text=No+image';
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
-    let requestConfig = {
-        withCredentials: true,
-        headers: {
-            'API-KEY': 'ef9b2af2-1191-4a88-9505-af9dd2588060'
-        }
-    }
+    let followAPI = new FollowAPI();
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
 
     const follow = (userId) => {
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, requestConfig)
-            .then(response => {
-                if (response.data.resultCode === 0) {
+      followAPI.follow(userId)
+            .then(data => {
+                debugger;
+                if (data.data.resultCode === 0) {
                     props.follow(userId)
                 }
             })
     }
 
     const unfollow = (userId) => {
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/delete/${userId}`, requestConfig)
-            .then(response => {
-                if (response.data.resultCode === 0) {
+       followAPI.unfollow(userId)
+            .then(data => {
+                if (data.data.resultCode === 0) {
                     props.unfollow(userId);
                 }
             })
@@ -44,7 +40,7 @@ const Users = props => {
                 {pages.map(p => {
                     return <span key={uuidv4()}
                                  onClick={() => props.onPageChanged(p)}
-                                 className={props.currentPage === p && classes.selectedPage}>{p}</span>
+                                 className={props.currentPage === p ? classes.selectedPage: null}>{p}</span>
                 })}
             </div>
             {
