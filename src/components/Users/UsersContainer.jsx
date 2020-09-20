@@ -4,7 +4,7 @@ import {
     setCurrentPage,
     setPreloader,
     setUsers,
-    setUsersTotalCount, toggleIsFollowing,
+    setUsersTotalCount,
     unfollow
 } from "../../redux/usersReducer";
 import React from "react";
@@ -45,9 +45,7 @@ class UsersAPIComponent extends React.Component {
                        onPageChanged={this.onPageChanged}
                        users={this.props.users}
                        follow={this.props.follow}
-                       unfollow={this.props.unfollow}
-                       isFollowing={this.props.isFollowing}
-                       toggleIsFollowing={this.props.toggleIsFollowing}/>
+                       unfollow={this.props.unfollow}/>
             </>
         )
     }
@@ -66,7 +64,7 @@ const mapStateToProps = (state) => {
 }
 
 const dispatchedProps = {
-    follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, setPreloader, toggleIsFollowing
+    follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, setPreloader
 };
 
 
