@@ -2,34 +2,14 @@ import React from 'react';
 import classes from "./Users.module.css";
 import {v4 as uuidv4} from "uuid";
 import {NavLink} from "react-router-dom";
-import {FollowAPI} from "../../api/api";
 
 const Users = props => {
     let dummyImg = 'https://dummyimage.com/75x75/c2c0c2/494a4f.png&text=No+image';
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
-    let followAPI = new FollowAPI();
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
-    }
-
-    const follow = (userId) => {
-        followAPI.follow(userId)
-            .then(data => {
-                if (data.data.resultCode === 0) {
-                    props.follow(userId)
-                }
-            })
-    }
-
-    const unfollow = (userId) => {
-       followAPI.unfollow(userId)
-            .then(data => {
-                if (data.data.resultCode === 0) {
-                    props.unfollow(userId);
-               }
-            })
     }
 
     return (
@@ -62,8 +42,8 @@ const Users = props => {
                                 <div>{"user.location.city"}</div>
                             </div>
                             {
-                                user.followed ? <button className={classes.followBtn} onClick={() => unfollow(user.id)}>Unfollow</button>
-                                    : <button className={classes.followBtn} onClick={() => follow(user.id)}>Follow</button>
+                                user.followed ? <button className={classes.followBtn} onClick={() => props.unfollow(user.id)}>Unfollow</button>
+                                    : <button className={classes.followBtn} onClick={() => props.follow(user.id)}>Follow</button>
                             }
                         </div>
                     </div>

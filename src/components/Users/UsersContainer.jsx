@@ -1,38 +1,20 @@
 import {connect} from "react-redux";
 import {
-    follow,
+    follow, getUsers,
     setCurrentPage,
-    setPreloader,
-    setUsers,
-    setUsersTotalCount,
     unfollow
 } from "../../redux/usersReducer";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {UserAPI} from "../../api/api";
-
-let userAPI = new UserAPI();
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
-        this.props.setPreloader(true);
-        userAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.setPreloader(false);
-                this.props.setUsers(data.items)
-                //this.props.setUsersTotalCount(response.data.totalCount)
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     onPageChanged = (page) => {
-        this.props.setCurrentPage(page);
-        this.props.setPreloader(true);
-        userAPI.getUsers(page, this.props.pageSize)
-            .then(data => {
-                this.props.setPreloader(false);
-                this.props.setUsers(data.items)
-            })
+        this.props.getUsers(page, this.props.pageSize);
     }
 
     render() {
@@ -64,7 +46,7 @@ const mapStateToProps = (state) => {
 }
 
 const dispatchedProps = {
-    follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, setPreloader
+    follow, unfollow, setCurrentPage, getUsers,
 };
 
 
