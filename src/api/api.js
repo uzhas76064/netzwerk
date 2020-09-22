@@ -31,3 +31,9 @@ export class HeaderAPI {
             .then(response => response.data);
     }
 }
+
+export class ProfileAPI {
+    fetchProfile = (userId) => {
+        return axiosInstance.get(`profile/${userId}`)
+    }
+}
