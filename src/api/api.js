@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 export class UserAPI {
     getUsers = (currentPage, pageSize) => {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => response.data)
+            .then(response => response.data);
     }
 }
 
@@ -22,5 +22,12 @@ export class FollowAPI {
 
     unfollow = (userId) => {
         return axiosInstance.delete(`follow/${userId}`)
+    }
+}
+
+export class HeaderAPI {
+    doAuth = () => {
+        return axiosInstance.get(`auth/me`)
+            .then(response => response.data);
     }
 }
