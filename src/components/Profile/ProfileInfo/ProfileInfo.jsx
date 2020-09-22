@@ -3,6 +3,8 @@ import classes from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 
 const ProfileInfo = (props) => {
+    let dummyImg = 'https://dummyimage.com/150x150/c2c0c2/494a4f.png&text=No+image';
+
     if(!props.profile) {
         return <Preloader/>
     }
@@ -14,7 +16,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={classes.descriptionBlock}>
                 <q>{props.profile.aboutMe}</q>
-                <img src={props.profile.photos.large} alt=""/>
+                <img src={props.profile.photos.large !== null ? props.profile.photos.large: dummyImg} alt=""/>
             </div>
             <div className={classes.profileInfo}>
                 <div className={classes.website}>
