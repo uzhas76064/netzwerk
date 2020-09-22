@@ -1,11 +1,12 @@
 import React from 'react';
 import Post from './Post/Post';
 import classes from "../MyPosts/MyPosts.module.css";
+import {v4 as uuidv4} from 'uuid';
 
 const MyPosts = (props) => {
     let newPostInput = React.createRef();
 
-    let postsElements = props.posts.map(post => <Post postText={post.postText} id={post.id} likesCount={post.likesCount}/>);
+    let postsElements = props.posts.map(post => <Post key={uuidv4()} postText={post.postText} id={post.id} likesCount={post.likesCount}/>);
 
     const addPost = () => {
         props.addPost();

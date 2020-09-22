@@ -1,9 +1,14 @@
 import React from 'react';
+import './Preloader.css';
 
-const Preloader = props => {
+const Preloader = () => {
     return (
-        <div>
-
+        <div className="loadingio-spinner-pulse-gx61oe4j1g5">
+            <div className="ldio-iks6gkbpxy">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     );
 };
