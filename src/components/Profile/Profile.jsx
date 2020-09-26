@@ -6,7 +6,7 @@ import classes from './Profile.module.css';
 const Profile = (props) => {
     return (
         <div className={classes.profile}>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo status={props.status} updateStatus={props.updateStatus} profile={props.profile}/>
             <MyPostsContainer store={props.store} />
         </div>
     );
