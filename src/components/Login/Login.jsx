@@ -1,7 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-
 export const Login = () => {
     const onSubmit = (formData) => {
         console.log(formData)

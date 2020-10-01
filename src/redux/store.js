@@ -3,8 +3,6 @@ import dialogsReducer from "./dialogsReducer";
 import sidebarReducer from "./sidebarReducer";
 
 export const SEND_MESSAGE = 'SEND_MESSAGE';
-export const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
-export const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 export const ADD_POST = 'ADD_POST';
 
 let store = {
