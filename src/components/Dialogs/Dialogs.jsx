@@ -3,21 +3,16 @@ import classes from "./Dialogs.module.css";
 import Message from "../Dialogs/Message/Message";
 import DialogItem from "../Dialogs/DialogItem/DialogItem";
 import {Redirect} from "react-router-dom";
+import MessageForm from "./MessageForm";
 
 const Dialogs = (props) => {
     let state = props.dialogsPage;
 
     let dialogsElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} key={dialog.id} />);
     let messagesElements = state.messages.map(message => <Message message={message.message} key={message.id} />);
-    let newMessageBody = state.newMessageBody;
 
-    const sendMessage = () => {
-       props.sendMessage();
-    };
-
-    const newMessageChange = (e) => {
-        let body = e.target.value;
-        props.updateNewMessageBody(body);
+    const sendMessage = (values) => {
+       props.sendMessage(values.messageBody);
     };
 
     if(props.isAuth === false) {
@@ -31,11 +26,7 @@ const Dialogs = (props) => {
          </div>
           <div className={classes.messages}>
               { messagesElements }
-              <input
-                  onChange={newMessageChange}
-                  value={newMessageBody}
-                  placeholder="Введите сообщение"/>
-              <button onClick={sendMessage}>Отправить</button>
+              <MessageForm onSubmit={sendMessage}/>
           </div>
       </div>
     );

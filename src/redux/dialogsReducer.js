@@ -1,4 +1,4 @@
-import {SEND_MESSAGE, UPDATE_NEW_MESSAGE_BODY} from "./store";
+import {SEND_MESSAGE} from "./store";
 
 let initialState = {
     dialogs: [
@@ -16,28 +16,19 @@ let initialState = {
         {id: 4, message: "Давай дружить"},
         {id: 6, message: "Зайдем сегодня в магазин?"}
     ],
-    newMessageBody: ''
 };
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-             return {
-                ...state,
-                newMessageBody: action.body
-            }
         case SEND_MESSAGE:
-            let body = state.newMessageBody;
              return {
                 ...state,
-                newMessageBody: '',
-                messages: [...state.messages, {id: 6, message: body}]
+                messages: [...state.messages, {id: 6, message: action.messageBody}]
             }
         default:
             return state;
     }
 };
-export const sendMessageCreator =() => ({type: SEND_MESSAGE});
-export const updateNewMessageBodyCreator = (body) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
+export const sendMessageCreator = (messageBody) => ({type: SEND_MESSAGE, messageBody});
 
 export default dialogsReducer;
