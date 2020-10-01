@@ -9,6 +9,7 @@ const MyPosts = (props) => {
 
     const addPost = (values) => {
         props.addPost(values.postBody);
+        values.postBody = '';
     };
 
     return (
