@@ -2,6 +2,7 @@ import {HeaderAPI} from "../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
+
 let headerAPI = new HeaderAPI();
 
 let initialState = {
@@ -17,25 +18,42 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                isAuth: true
             }
         default:
             return state;
     }
 }
 
-export const setAuth = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, login, email}});
+export const setAuth = (userId, email, login, isAuth) => ({type: SET_USER_DATA, data: {userId, login, email, isAuth}});
 
 export const setAuthUserData = () => {
     return (dispatch) => {
         headerAPI.doAuth()
-            .then(data => {
-                if(data.resultCode === 0) {
-                    let {login, id, email} = data.data;
-                    dispatch(setAuth(id, email, login))
+            .then(response => {
+                if(response.resultCode === 0) {
+                    let {login, id, email} = response.data;
+                    dispatch(setAuth(id, email, login, true))
                 }
             })
     }
+}
+
+export const login = (email, password, rememberMe) => (dispatch) => {
+    headerAPI.login(email, password, rememberMe)
+        .then(response => {
+            if(response.resultCode === 0) {
+               dispatch(setAuthUserData());
+            }
+        })
+}
+
+export const logout = () => (dispatch) => {
+    headerAPI.logout()
+        .then(response => {
+            if(response.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false));
+            }
+        })
 }
 
 export default authReducer;
