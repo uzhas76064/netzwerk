@@ -27,25 +27,22 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuth = (userId, email, login, isAuth) => ({type: SET_USER_DATA, data: {userId, login, email, isAuth}});
 
-export const setAuthUserData = () => {
-    return (dispatch) => {
-        headerAPI.doAuth()
-            .then(response => {
-                if(response.resultCode === 0) {
-                    let {login, id, email} = response.data;
-                    dispatch(setAuth(id, email, login, true))
-                }
-            })
-    }
+export const setAuthUserData = () => (dispatch) => {
+    return headerAPI.doAuth()
+        .then(response => {
+            if (response.resultCode === 0) {
+                let {login, id, email} = response.data;
+                dispatch(setAuth(id, email, login, true))
+            }
+        })
 }
 
 export const login = (email, password, rememberMe) => (dispatch) => {
     headerAPI.login(email, password, rememberMe)
         .then(response => {
-            if(response.resultCode === 0) {
-               dispatch(setAuthUserData());
-            }
-            else {
+            if (response.resultCode === 0) {
+                dispatch(setAuthUserData());
+            } else {
                 let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : 'Something went wrong';
                 dispatch(stopSubmit('login', {_error: errorMessage}));
             }
@@ -55,7 +52,7 @@ export const login = (email, password, rememberMe) => (dispatch) => {
 export const logout = () => (dispatch) => {
     headerAPI.logout()
         .then(response => {
-            if(response.resultCode === 0) {
+            if (response.resultCode === 0) {
                 dispatch(setAuthUserData(null, null, null, false));
             }
         })

@@ -76,6 +76,7 @@ export const setPreloader = (isFetching) => ({type: SET_PRELOADER, isFetching});
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(setPreloader(true));
+        dispatch(setCurrentPage(currentPage));
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
                 dispatch(setPreloader(false));
