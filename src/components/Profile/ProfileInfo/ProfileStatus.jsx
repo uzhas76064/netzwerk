@@ -1,36 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-export default class ProfileStatus extends React.Component{
-    state = {
-        editMode: false,
-        status: this.props.status
+const ProfileStatus = (props) => {
+    let [editMode, setEditMode] = useState(false);
+    let [status, setStatus] = useState(props.status);
+
+    useEffect(() => {
+        setStatus(props.status);
+    }, [props.status])
+
+    const toggleMode = () => {
+        setEditMode(!editMode);
+        if (editMode)
+            props.updateStatus(status);
     }
 
-    toggleMode = () => {
-        this.setState({editMode: !this.state.editMode});
-        if(!this.state.editMode)
-            this.props.updateStatus(this.state.status)
+    const onInputChange = (e) => {
+        setStatus(e.target.value);
     }
 
-    onInputChange = (e) => {
-        this.setState({
-            status: e.target.value
-        })
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.status !== this.props.status)
-            this.setState({
-                status: this.props.status
-            })
-    }
-
-    render() {
-        return (
-           <div>
-               {!this.state.editMode ? <q onDoubleClick={this.toggleMode}>{this.props.status || 'no status'}</q>:
-                   <input onChange={this.onInputChange} onBlur={this.toggleMode} autoFocus={true} value={this.state.status} type="text"/>}
-           </div>
-        );
-    }
+    return (
+        <div>
+            {!editMode ? <q onDoubleClick={toggleMode}>{status || 'no status'}</q> :
+                <input onChange={onInputChange} onBlur={toggleMode} autoFocus={true} value={status}
+                       type="text"/>}
+        </div>
+    );
 }
+
+export default ProfileStatus;
