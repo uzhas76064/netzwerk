@@ -10,6 +10,7 @@
     "bootstrap": "^4.5.0",
     "bootstrap-icons": "^1.0.0-alpha4",
     "font-awesome": "^4.7.0",
+    "jest-snapshot": "^26.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
@@ -44,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "expect": "^26.5.3"
   }
 }
