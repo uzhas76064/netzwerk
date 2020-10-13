@@ -1,19 +1,19 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import {required} from "../../utils/validators/validators";
-import FormControl from "../common/FormControls/FormControls";
+import FormControl, {createField} from "../common/FormControls/FormControls";
 import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
 
 const Input = FormControl('input');
 
-export const Login = (props) => {
+export const Login = ({isAuth, login}) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe);
+        login(formData.email, formData.password, formData.rememberMe);
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to='/profile'/>
     }
 
@@ -25,19 +25,14 @@ export const Login = (props) => {
     );
 };
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field validate={[required]} name='email' type='email' component={Input} placeholder='Email'/>
-            </div>
-            <div>
-                <Field validate={[required]} name='password' type='password' component={Input} placeholder='Password'/>
-            </div>
-            <div>
-                <Field name='rememberMe' type='checkbox' component='input'/> remember me
-            </div>
-            {props.error ? <div>{props.error}</div>:null}
+        <form onSubmit={handleSubmit}>
+            {createField([required], 'email', 'email', Input, 'Email', null)}
+            {createField([required], 'password', 'password', Input, 'Password', null)}
+            {createField(null, 'rememberMe', 'checkbox', Input, null, 'remember me')}
+
+            {error ? <div>{error}</div>:null}
             <button>Sign in</button>
         </form>
     );

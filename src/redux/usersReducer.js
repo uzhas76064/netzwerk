@@ -1,4 +1,5 @@
 import {FollowAPI, UserAPI} from "../api/api";
+import {alterArray} from "../utils/alterArray";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW'
@@ -24,22 +25,12 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: true}
-                    }
-                    return user;
-                })
+                users: alterArray(state.users, action.userId, 'id', {followed: true})
             }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map((user) => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: false}
-                    }
-                    return user
-                })
+                users: alterArray(state.users, action.userId, 'id', {followed: false})
             }
         case SET_USERS:
             return {
@@ -86,25 +77,17 @@ export const getUsers = (currentPage, pageSize) => {
     }
 }
 
-export const follow = (userId) => {
-    return (dispatch) => {
-        followAPI.follow(userId)
-            .then(data => {
-                if (data.data.resultCode === 0) {
-                    dispatch(followSuccess(userId));
-                }
-            })
+export const follow = (userId) => async (dispatch) => {
+    let response = await followAPI.follow(userId)
+    if (response.data.resultCode === 0) {
+        dispatch(followSuccess(userId));
     }
 }
 
-export const unfollow = (userId) => {
-    return (dispatch) => {
-        followAPI.unfollow(userId)
-            .then(data => {
-                if (data.data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId));
-                }
-            })
+export const unfollow = (userId) => async (dispatch) => {
+    let response = await followAPI.unfollow(userId)
+    if (response.data.resultCode === 0) {
+        dispatch(unfollowSuccess(userId));
     }
 }
 
