@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {
     follow, getUsers,
-    setCurrentPage,
+    setCurrentPage, setUsersTotalCount,
     unfollow
 } from "../../redux/usersReducer";
 import React from "react";
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 }
 
 const dispatchedProps = {
-    follow, unfollow, setCurrentPage, getUsers,
+    follow, unfollow, setCurrentPage, setUsersTotalCount, getUsers,
 };
 
 

@@ -14,7 +14,7 @@ let followAPI = new FollowAPI();
 let initialState = {
     users: [],
     pageSize: 5,
-    totalUsersCount: 100,
+    totalUsersCount: 1000,
     currentPage: 1,
     isFetching: true,
     isFollowing: []
@@ -72,7 +72,7 @@ export const getUsers = (currentPage, pageSize) => {
             .then(data => {
                 dispatch(setPreloader(false));
                 dispatch(setUsers(data.items));
-                //this.props.setUsersTotalCount(response.data.totalCount)
+                setUsersTotalCount(data.totalCount)
             })
     }
 }
