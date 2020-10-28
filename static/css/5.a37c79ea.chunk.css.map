@@ -1,0 +1,1 @@
+{"version":3,"sources":["FormControls.module.css"],"names":[],"mappings":"AAAA,iCACI,yBAAkB,CAAlB,sBAAkB,CAAlB,iBACJ,CAEA,2DACI,oBACJ,CAEA,+BACI,SACJ","file":"5.a37c79ea.chunk.css","sourcesContent":[".formControl {\r\n    width: fit-content;\r\n}\r\n\r\n.formControl.error {\r\n    border: 2px solid red;\r\n}\r\n\r\n.errorText {\r\n    color: red;\r\n}"]}
