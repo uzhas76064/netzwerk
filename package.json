@@ -1,6 +1,7 @@
 {
   "name": "soc-media",
   "version": "0.1.0",
+  "homepage": "http://yuribenjamin.github.io/netzwerk",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -29,6 +30,7 @@
     "uuid": "^8.3.0"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
