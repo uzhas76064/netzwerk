@@ -6,13 +6,15 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import WithSuspense from "./hoc/WithSuspense";
+
+const ProfileContainer = React.lazy(() => import(`./components/Profile/ProfileContainer`));
+const UsersContainer = React.lazy(() => import(`./components/Users/UsersContainer`));
+const Login = React.lazy(() => import(`./components/Login/Login`));
 
 class App extends React.Component {
     componentDidMount() {
@@ -29,13 +31,13 @@ class App extends React.Component {
                 <div className="app-wrapper">
                     <Navbar/>
                     <div className="app-wrapper-content">
-                        <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                        <Route path="/profile/:userId?" render={WithSuspense(ProfileContainer)}/>
                         <Route path="/messages" render={() => <DialogsContainer/>}/>
-                        <Route path="/users" render={() => <UsersContainer/>}/>
+                        <Route path="/users" render={WithSuspense(UsersContainer)}/>
                         <Route path="/news" component={News}/>
                         <Route path="/music" component={Music}/>
                         <Route path="/settings" component={Settings}/>
-                        <Route path='/login' component={Login}/>
+                        <Route path='/login' render={WithSuspense(Login)}/>
                     </div>
                 </div>
             </>
