@@ -10,6 +10,12 @@ const ProfileInfo = (props) => {
         return <Preloader/>
     }
 
+    const selectMainPhoto = (e) => {
+        if(e.target.files.length) {
+            props.uploadPhoto(e.target.files[0]);
+        }
+    }
+
     return (
         <div>
             <div className={classes.profileImageContainer}>
@@ -18,6 +24,7 @@ const ProfileInfo = (props) => {
             <div className={classes.descriptionBlock}>
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <img src={props.profile.photos.large !== null ? props.profile.photos.large: dummyImg} alt=""/>
+                {props.isOwner ? <input onChange={selectMainPhoto} style={{position: "relative", top: "110px"}} type="file"/>:null}
             </div>
             <div className={classes.profileInfo}>
                 <div className={classes.website}>

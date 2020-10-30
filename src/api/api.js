@@ -52,4 +52,15 @@ export class ProfileAPI {
     updateStatus = (status) => {
         return axiosInstance.put(`profile/status/`, {status})
     }
+
+    uploadPhoto = (photo) => {
+        const formData = new FormData();
+        formData.append('image', photo);
+
+        return axiosInstance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    }
 }
