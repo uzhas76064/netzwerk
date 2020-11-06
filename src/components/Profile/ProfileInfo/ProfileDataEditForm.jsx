@@ -1,41 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import classes from "./ProfileInfo.module.css";
-import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus";
-import ProfileDataEditForm from "./ProfileDataEditForm";
 
-const ProfileInfo = (props) => {
-    let dummyImg = 'https://dummyimage.com/150x150/c2c0c2/494a4f.png&text=No+image';
-    const [editMode, setEditMode] = useState(false);
-
-    if(!props.profile) {
-        return <Preloader/>
-    }
-
-    const selectMainPhoto = (e) => {
-        if(e.target.files.length) {
-            props.uploadPhoto(e.target.files[0]);
-        }
-    }
-
-    return (
-        <div>
-            <div className={classes.profileImageContainer}/>
-            <div className={classes.descriptionBlock}>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-                <img src={props.profile.photos.large !== null ? props.profile.photos.large: dummyImg} alt=""/>
-                {props.isOwner ? <input onChange={selectMainPhoto} style={{position: "relative", top: "110px"}} type="file"/>:null}
-            </div>
-            {editMode ? <ProfileDataEditForm {...props}/>
-                        :<ProfileData gotoEditForm={() => {setEditMode(true)}} {...props}/>}
-        </div>
-    )
-}
-
-const ProfileData = (props) => {
+const ProfileDataEditForm = (props) => {
     return (
         <div className={classes.profileInfo}>
-            {props.isOwner ? <button onClick={props.gotoEditForm}>Edit profile</button>: null}
+            {props.isOwner ? <button onClick={props.gotoEditForm}>Save changes</button> : null}
             <div className={classes.website}>
                 <a href={props.website}>
                     <i className="fa fa-globe" aria-hidden="true"/>
@@ -79,10 +48,9 @@ const ProfileData = (props) => {
                 </a>
             </div>
             <div>
-                Need a job: {props.profile.lookingForAJob ? 'YES':'NO'}
+                Need a job: {props.profile.lookingForAJob ? 'YES' : 'NO'}
             </div>
         </div>
     )
 }
-
-export default ProfileInfo;
+export default ProfileDataEditForm
