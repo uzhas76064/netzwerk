@@ -31,8 +31,8 @@ export class HeaderAPI {
             .then(response => response.data);
     }
 
-    login = (email, password, rememberMe = false) => {
-        return axiosInstance.post('auth/login', {email, password, rememberMe});
+    login = (email, password, rememberMe = false, captcha = null) => {
+        return axiosInstance.post('auth/login', {email, password, rememberMe, captcha});
     }
 
     logout = () => {
@@ -62,5 +62,11 @@ export class ProfileAPI {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    }
+}
+
+export class SecurityAPI {
+    getCaptchaUrl = () => {
+        return axiosInstance.get(`security/get-captcha-url`);
     }
 }
