@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {Route} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -31,13 +31,17 @@ class App extends React.Component {
                 <div className="app-wrapper">
                     <Navbar/>
                     <div className="app-wrapper-content">
-                        <Route path="/profile/:userId?" render={WithSuspense(ProfileContainer)}/>
-                        <Route path="/messages" render={() => <DialogsContainer/>}/>
-                        <Route path="/users" render={WithSuspense(UsersContainer)}/>
-                        <Route path="/news" component={News}/>
-                        <Route path="/music" component={Music}/>
-                        <Route path="/settings" component={Settings}/>
-                        <Route path='/login' render={WithSuspense(Login)}/>
+                        <Switch>
+                            <Route exact path='/' render={() => <Redirect to='profile'/>}/>
+                            <Route path="/profile/:userId?" render={WithSuspense(ProfileContainer)}/>
+                            <Route path="/messages" render={() => <DialogsContainer/>}/>
+                            <Route path="/users" render={WithSuspense(UsersContainer)}/>
+                            <Route path="/news" component={News}/>
+                            <Route path="/music" component={Music}/>
+                            <Route path="/settings" component={Settings}/>
+                            <Route path='/login' render={WithSuspense(Login)}/>
+                            <Route render={() => <div>404</div>}/>
+                        </Switch>
                     </div>
                 </div>
             </>
