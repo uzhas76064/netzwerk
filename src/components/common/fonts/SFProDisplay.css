@@ -1,0 +1,9 @@
+@font-face {
+    font-family:SFProDisplay;
+    src: url(src/components/common/fonts/SFProDisplay.ttf);
+}
+
+@font-face {
+    font-family:SFProDisplaySemibold;
+    src: url(src/components/common/fonts/SFProDisplaySemibold.ttf);
+}
