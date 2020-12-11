@@ -3,6 +3,7 @@ import classes from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 import ProfileDataEditForm from "./ProfileDataEditForm";
+import FileUpload from "../../common/FileUpload/FileUpload";
 
 const ProfileInfo = (props) => {
     let dummyImg = 'https://dummyimage.com/150x150/c2c0c2/494a4f.png&text=No+image';
@@ -24,10 +25,14 @@ const ProfileInfo = (props) => {
             <div className={classes.descriptionBlock}>
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <img src={props.profile.photos.large !== null ? props.profile.photos.large: dummyImg} alt=""/>
-                {props.isOwner ? <input onChange={selectMainPhoto} style={{position: "relative", top: "110px"}} type="file"/>:null}
+                {props.isOwner ? <FileUpload uploadMethod={selectMainPhoto}/> :null}
             </div>
-            {editMode ? <ProfileDataEditForm {...props}/>
-                        :<ProfileData gotoEditForm={() => {setEditMode(true)}} {...props}/>}
+            {editMode ? <ProfileDataEditForm {...props}/> :<ProfileData {...props}/>}
+            {props.isOwner ?
+                <button className={classes.editButton} onClick={() => {setEditMode(true)}}>
+                    <i className="fa fa-edit"/>
+                    Edit profile
+                </button>: null}
         </div>
     )
 }
@@ -35,7 +40,6 @@ const ProfileInfo = (props) => {
 const ProfileData = (props) => {
     return (
         <div className={classes.profileInfo}>
-            {props.isOwner ? <button onClick={props.gotoEditForm}>Edit profile</button>: null}
             <div className={classes.website}>
                 <a href={props.website}>
                     <i className="fa fa-globe" aria-hidden="true"/>
@@ -79,7 +83,7 @@ const ProfileData = (props) => {
                 </a>
             </div>
             <div>
-                Need a job: {props.profile.lookingForAJob ? 'YES':'NO'}
+                {props.profile.lookingForAJob ? <span style={{color: "#66BB6A"}}>Need a job: YES</span>: <span style={{color: "#FF7043"}}>Need a job: NO</span>}
             </div>
         </div>
     )

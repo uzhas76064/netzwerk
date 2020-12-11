@@ -14,7 +14,7 @@ const MyPosts = (props) => {
 
     return (
         <div className={classes.postsBlock}>
-            <h3>My posts</h3>
+            <h3 className={classes.postsSection}>Posts</h3>
             <div className={classes.addPost}>
                 <PostForm onSubmit={addPost}/>
             </div>
