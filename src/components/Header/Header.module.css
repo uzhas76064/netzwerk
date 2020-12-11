@@ -5,10 +5,11 @@
     box-shadow: 0px 0px 7px -2px #000000;
     background: #0050B3;
     color: white;
+    font-size: 16px;
   }
 
   .logo {
-    display: flex;
+      display: flex;
       justify-content: space-around;
       align-items: center;
   }
@@ -16,11 +17,29 @@
   .logo {
     font-size: 11px;
   }
-  
+
   .header img {
     width: 45px;
   }
 
   .loginBlock {
       float: right;
+  }
+
+  .currentUser {
+      border-right: 1px solid #003A8C;
+      padding-right: 10px;
+      margin-right: 10px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+  }
+
+  .logoutButton {
+      border-radius: 3px;
+      background: none;
+      border: 1px solid white;
+      color: white;
+      cursor: pointer;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 14px;
   }
